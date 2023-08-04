@@ -72,7 +72,7 @@ Things you may want to cover:
 
 | Column             | Type     | Options     |
 | ------------------ | ------   | ----------- |
-| user_id            |references|             |
+| nick_name          |references|             |
 | order_id           |references|             |
 
   belongs_to :user
