@@ -13,16 +13,20 @@ Things you may want to cover:
 
 * Database creation
 
+
 # テーブル設計 table :user 
 
 | Column             | Type    | Options     |
 | ------------------ | ------  | ----------- |
-| name               | text    | null: false |
-| address            | string  | null: false |
-| phone              | text    | null: false |
+| family_name(CAP)   | text    | null: false |
+| first_name (CAP)   | text    | null: false |
+| family_name(Kana)  | text    | null: false |
+| first_name (Kana)  | text    | null: false |
+| date_of_birth      | date    | null: false |
+| nick_name          | text    | null: false |
 | email              | text    | null: false |
 | encrypted_password | string  | null: false |
-
+| order_id           | references|           |
 
 - has_many :items
 - has_many :orders
@@ -34,13 +38,17 @@ Things you may want to cover:
 
 | Column                | Type    | Options     |
 | ------------------    | ------  | ----------- |
-| brand                 | text    | null: false |
-| category              | string  | null: false |
-| item name             | text    | null: false |
-| minimum price         |Numeric  | null: false |
-| pictures              |  BLOB   | null: false |
-| user id               |references|            |
-
+| pictures              | BLOB    | null: false |
+| item_name             | text    | null: false |
+| item_description      | string  | null: false |
+| category              | VARCHAR | null: false |
+| item_status           | VARCHAR | null: false |
+| delivery_charge       | VARCHAR | null: false |
+| shipping_origin       | VARCHAR | null: false |
+| days_until_dispatch   | VARCHAR | null: false |
+| initial_bid_price     | numeric | null: false |
+| user_id               |references|            |
+| order_id              |references|            |
 
   belongs_to :user
   
@@ -50,33 +58,18 @@ Things you may want to cover:
 
 | Column             | Type     | Options     |
 | ------------------ | ------   | ----------- |
-| order numbers      | text     | null: false |
-| delivery date      | date     | null: false |
-| delivery time      |timestamp |             |
-| payment method     | text     |             |
-| user id            |references|             |
+| delivery_zip_code  | VARCHAR  | null: false |
+| prifecture         | VARCHAR  | null: false |
+| city               | string   | null: false |
+| street_address     | string   | null: false |
+| build_number       | string   |             |
+| phone_number       | VARCHAR  | null: false |
+| user_id            |references|             |
+| order_id           | VARCHAR  | SERIAL      |
+
 
   belongs_to :auction
   belongs_to :user
-
-
-
-# テーブル設計 table :auction 
-
-| Column                   | Type    | Options     |
-| ------------------       | ------  | ----------- |
-| Bidder's user id         | text    | null: false |
-| Bidder's prices          |Numeric  | null: false |
-| Bidder's timestamp       |timestamp| null: false |
-| Winning bidder's user id | text    | null: false |
-| Bidded price             |Numeric  | null: false |
-| Bidded timestamp         |timestamp| null: false |
-
-  belongs_to :item
-  belongs_to :user
-
-
-
 
 
 * Database initialization
