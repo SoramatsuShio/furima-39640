@@ -22,10 +22,12 @@ Things you may want to cover:
 | email              | string  | null: false, unique: true |
 | encrypted_password | string  | null: false |
 | family_name_zenkaku| string  | null: false |
-| first_name_zenkaku |  string  | null: false |
-| family_name_kana   |  string  | null: false |
-| first_name_kana    |  string  | null: false |
-| date_of_birth      | date    | null: false |
+| first_name_zenkaku |  string | null: false |
+| family_name_kana   |  string | null: false |
+| first_name_kana    |  string | null: false |
+| date_of_birth      |  date   | null: false |
+| id                 |integer |Auto Increment|
+| item_id            |references|foreign_key |
 
 has_many :user_items
 has_many :items
@@ -44,9 +46,11 @@ has_many :items
 | days_until_dispatch_id|integer|null: false |
 | mini_sell_price     |integer | null: false |
 | id                  |integer |Auto Increment|
+
 ### ActiveHash
 has_many :user_items
-has_many :users, through: :user_items
+
+belongs_to users
 
 
 
@@ -56,15 +60,17 @@ has_many :users, through: :user_items
 | Column            | Type     | Options              |
 | ----------------- | -------- | -------------------- |
 | zipcode           | string   | null: false          |
-| prefecture        | varchar  | null: false          |
+| prefecture        | genre_id | null: false          |
 | city              | string   | null: false          |
 | street_address    | string   | null: false          |
 | building_name     | text     |                      |
 | phone             | string   | null: false          |
 | id                |integer   |Auto Increment        |
+| item_id           |references|foreign_key           |
 
 
 belongs_to :user
+belongs_to :items
 
 
 
