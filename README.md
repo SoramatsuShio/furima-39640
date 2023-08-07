@@ -21,26 +21,29 @@ Things you may want to cover:
 | nick_name          | string  | null: false |
 | email              | string  | null: false, unique: true |
 | encrypted_password | string  | null: false |
-| family_name_zenkaku| text    | null: false |
-| first_name_zenkaku | text    | null: false |
-| family_name_kana   | text    | null: false |
-| first_name_kana    | text    | null: false |
+| family_name_zenkaku| string  | null: false |
+| first_name_zenkaku |  string  | null: false |
+| family_name_kana   |  string  | null: false |
+| first_name_kana    |  string  | null: false |
 | date_of_birth      | date    | null: false |
 
 has_many :user_items
-has_many :items, through: :user_items
-has_many :orders
+has_many :items
+
 
 
 ## テーブル: items
 | カラム名              | データ型 | オプション     |
 | ------------------- | ------ | ----------- |
-| category_id         | integer| null: false |
-| item_status_id      | integer| null: false |
+| item_name           | string | null: false |
+| item_desc           | text   | null: false |
+| category            | integer| null: false |
+| item_status         | integer| null: false |
 | delivery_charge_id  | integer| null: false |
 | shipping_origin_id  | integer| null: false |
 | days_until_dispatch_id|integer|null: false |
-
+| mini_sell_price     |integer | null: false |
+| id                  |integer |Auto Increment|
 ### ActiveHash
 has_many :user_items
 has_many :users, through: :user_items
@@ -58,6 +61,8 @@ has_many :users, through: :user_items
 | street_address    | string   | null: false          |
 | building_name     | text     |                      |
 | phone             | string   | null: false          |
+| id                |integer   |Auto Increment        |
+
 
 belongs_to :user
 
@@ -69,10 +74,11 @@ belongs_to :user
 | ------------- | ---------- | ------------------------------ |
 | user_id       | bigint     | null: false, foreign_key: true |
 | item_id       | bigint     | null: false, foreign_key: true |
+| order_id      | bigint     | null: false, foreign_key: true |
 
-belongs_to :user
-belongs_to :item
-
+belongs_to :users
+belongs_to :items
+belongs_to :orders
 
 
 
