@@ -71,7 +71,7 @@ group :test do
   gem "webdrivers"
 end
 
-gem 'devise'
+
 group :development do
   gem 'rubocop', require: false
 end
@@ -80,3 +80,5 @@ group :production do
 end
 
 gem 'active_hash'
+
+gem 'devise'
