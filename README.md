@@ -64,7 +64,7 @@ has_one : order
 
 belongs_to :user
 belongs_to :item
-belongs_to :address
+has_one : address
 
 ## テーブル: Addresses
 
@@ -76,7 +76,7 @@ belongs_to :address
 | street_address    | string   | null: false          |
 | building_name     | string   |                      |
 | phone             | string   | null: false          |
-| id                |references|null: false,foreign_key: true|
+| order             |references|null: false,foreign_key: true|
 
 belongs_to :order
 
