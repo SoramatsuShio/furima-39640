@@ -47,7 +47,7 @@ has_many :items
 | shipping_origin_id  |integer | null: false |
 | days_until_dispatch_id|integer|null: false |
 | mini_sell_price     |integer | null: false |
-| id                  |references|null: false,foreign_key: true|
+| user                |references|null: false,foreign_key: true|
 
 belong_to :user
 has_one : order
@@ -58,13 +58,13 @@ has_one : order
 
 | Column        | Type       | Options                        |
 | ------------- | ---------- | ------------------------------ |
-| user_id       | integer    | null: false, foreign_key: true |
-| item_id       | integer    | null: false, foreign_key: true |
+| user          |references  | null: false, foreign_key: true |
+| item          |references  | null: false, foreign_key: true |
 
 
 belongs_to :user
 belongs_to :item
-
+belongs_to :address
 
 ## テーブル: Addresses
 
@@ -76,7 +76,7 @@ belongs_to :item
 | street_address    | string   | null: false          |
 | building_name     | string   |                      |
 | phone             | string   | null: false          |
-| order_id          |references| foreign_key          |
+| id                |references|null: false,foreign_key: true|
 
 belongs_to :order
 
