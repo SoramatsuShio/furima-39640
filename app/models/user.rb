@@ -7,8 +7,8 @@ class User < ApplicationRecord
          # app/models/user.rb
 
 class User < ApplicationRecord
-  validates :nick_name, presence: true
-  validates :email, presence: true, uniqueness: true
+  validates :nickname, presence: true
+  validates :email, presence: true
   validates :password, presence: true, length: { minimum: 6 }
   validates :password_confirmation, presence: true
   validates :family_name_zenkaku, presence: true
