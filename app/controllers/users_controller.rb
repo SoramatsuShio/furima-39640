@@ -5,12 +5,13 @@ class UsersController < ApplicationController
   
   def new
     # newアクションのコード
-    @user = user.new
+    @user = User.new
   end
 
   def create
     # createアクションのコード
-    @user = User.new(item_params)
+    @user = User.new(user_params)  # メソッド名を修正
+
     if @user.save
       redirect_to users_path
     else
@@ -18,4 +19,21 @@ class UsersController < ApplicationController
     end
   end
 
+  private
+  
+  # ストロングパラメータを定義
+  def user_params
+    params.require(:user).permit(
+      :nickname,
+      :email,
+      :password,
+      :password_confirmation,
+      :family_name_zenkaku,
+      :first_name_zenkaku,
+      :family_name_kana,
+      :first_name_kana,
+      :date_of_birth
+    )
+  end
 end
+
