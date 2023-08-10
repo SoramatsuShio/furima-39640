@@ -22,7 +22,7 @@ Things you may want to cover:
 | ----------------- | ---------- |--------- |
 | nickname          | string  | null: false |
 | email              | string  | null: false, unique: true |
-| encrypted_password | string  | null: false |
+| password | string  | null: false |
 | family_name_zenkaku| string  | null: false |
 | first_name_zenkaku |  string | null: false |
 | family_name_kana   |  string | null: false |
