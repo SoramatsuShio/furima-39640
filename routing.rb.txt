@@ -1,7 +1,7 @@
-
+routing.rb
 
 Rails.application.routes.draw do
-  devise_for :users
+  
   root to: "items#index"
   resources :users, only: [:edit, :update, :new, :destroy]
 end
