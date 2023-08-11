@@ -3,7 +3,10 @@ class UsersController < ApplicationController
   
   def index
     # 何もすることなし。トップページのビューを表示するだけ。
+   
   end
+
+ 
 
   def show
     if params[:id] == 'sign_out'
