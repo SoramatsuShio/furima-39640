@@ -6,13 +6,11 @@ class User < ApplicationRecord
 
     
          validates :nickname,presence: true
-         validates :email,presence: true
-         validates :nickname, presence: true
          validates :family_name_zenkaku, presence: true
          validates :first_name_zenkaku, presence: true
          validates :family_name_kana, presence: true
          validates :first_name_kana, presence: true
          validates :date_of_birth, presence: true
-         
-    
+
+
 end
