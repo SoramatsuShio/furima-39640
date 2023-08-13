@@ -13,7 +13,7 @@ class ItemsController < ApplicationController
 
   def create
     # createアクションのコード
-    @user = User.new(user_params)  # メソッド名を修正
+    @user = User.new(user_params) # メソッド名を修正
 
     if @user.save
       redirect_to users_path
