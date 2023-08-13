@@ -20,7 +20,7 @@ Things you may want to cover:
 
 | カラム名            | データ型 | オプション   |
 | ----------------- | ---------- |--------- |
-| nick_name          | string  | null: false |
+| nickname          | string  | null: false |
 | email              | string  | null: false, unique: true |
 | encrypted_password | string  | null: false |
 | family_name_zenkaku| string  | null: false |

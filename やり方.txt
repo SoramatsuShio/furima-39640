@@ -1,0 +1,66 @@
+
+        <%= link_to "ログイン", new_user_session_path, class: "nav__btn" %>
+        <%= link_to "新規登録", new_user_registration_path, class: "nav__btn" %>
+        <%= link_to "New Proto", new_prototype_path, class: "nav__btn" %>
+
+
+デバイス
+
+デバイス削除の方法
+
+1. deivise for usesers けす　ルーティングファイル内
+
+rails db:rollback
+
+２．デバイスアンインストール
+
+devise のユーザーモデルを消す　rails d devise user
+
+最後にデバイスアンインストール 
+
+rails d devise:install 
+
+Gemfile　gem 'devise'の削除 /  gem 'devise'
+bundle install /done
+
+残ったdevise関係のファイル・記述を手動で削除
+config/initializers/devise.rb ファイルを削除する必要がある  /done
+before_action :authenticate_user! (controllers)  /done
+user_signed_in? (controllers, views) /done
+current_user (controllers, views) /該当なし
+user_session (controllers, views)/該当なし
+devise.rb (config/initializers)/該当なし
+devise.en.yml (config/locales)/該当なし
+view/deviseのファイル/該当なし
+
+
+
+新たに再導入
+
+--------------------
+
+復習確認
+
+config/routes.rb からDeviseに関連するルーティングを手動で削除済
+
+
+DB削除する
+rookback -down -さっきのファイル使う-migrate
+
+
+rails d devise Userを使う：
+
+rails d devise User　Deviseが生成したユーザーモデルと関連する構成要素を削除
+
+app/views/devise ディレクトリ内のビューファイルを削除は今回は不要
+
+Deviseに関連するマイグレーションファイルを削除しなくていい認識
+※モデル userは自分で作成したため、今後devise 再インストールしたらそのuser モデルを使う予定のため
+
+config/initializers/devise.rb ファイルを削除する必要があるかどうかを確認したい
+
+
+再インストール　テキストみる
+rails g devise User を使う：
+
+
