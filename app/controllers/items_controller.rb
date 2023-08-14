@@ -28,6 +28,7 @@ class ItemsController < ApplicationController
   # ストロングパラメータを定義
   def item_params
     params.require(:item).permit(
+      :image,
       :item_name,
       :item_desc,
       :category_id,

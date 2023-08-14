@@ -6,7 +6,7 @@ class Item < ApplicationRecord
   belongs_to :deliverychargeid
   belongs_to :shippingoriginid
   belongs_to :daysuntildispatchid
-
+  has_one_attached :image
 
   validates :item_name, presence: true
 
