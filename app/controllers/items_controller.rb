@@ -1,9 +1,9 @@
 class ItemsController < ApplicationController
- 
-  before_action :move_to_index, except: [:index, :show]
+  before_action :authenticate_user!
+  #before_action :move_to_index, except: [:index, :show]
   
   def index
-    @items = Item.all　# Item出品画面をトップページを表示するindexアクションのコード
+    @items = Item.all # Item出品画面をトップページを表示するindexアクションのコード
   end
   
 
@@ -38,5 +38,7 @@ class ItemsController < ApplicationController
       :mini_sell_price,
       )
   end
+
+
 
 end
