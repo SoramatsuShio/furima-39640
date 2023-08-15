@@ -1,11 +1,11 @@
 class Item < ApplicationRecord
   
   extend ActiveHash::Associations::ActiveRecordExtensions
-  belongs_to :categoryid
-  belongs_to :itemstatusid
-  belongs_to :deliverychargeid
-  belongs_to :shippingoriginid
-  belongs_to :daysuntildispatchid
+  belongs_to :category
+  belongs_to :item_status
+  belongs_to :delivery_charge
+  belongs_to :shipping_origin
+  belongs_to :days_until_dispatch
   has_one_attached :image
 
   validates :item_name, presence: true
