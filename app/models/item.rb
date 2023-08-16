@@ -8,10 +8,19 @@ class Item < ApplicationRecord
   belongs_to :days_until_dispatch
   has_one_attached :image
 
+
+
+  # 商品画像一枚は必須
+  validates :image, presence: { message: "at least one picture needs to be attached" }
+
+  # 商品名は必須
   validates :item_name, presence: true
 
   # アイテム説明は必須で、最大1000文字まで
-  validates :item_desc, presence: true
+  validates :item_desc, presence: { message: "Item description can't be blank." }
+
+
+
 
   # カテゴリー、商品状態、送料、出品地域、発送までの日数はそれぞれ必須
   validates :category_id, presence: true, numericality: { other_than: 1 }
@@ -20,8 +29,14 @@ class Item < ApplicationRecord
   validates :shipping_origin_id, presence: true, numericality: { other_than: 1 }
   validates :days_until_dispatch_id, presence: true, numericality: { other_than: 1 }
 
-  # 最低販売価格は必須で、0以上の数値
-  validates :mini_sell_price, presence: { message: "can't be blank" }, numericality: { greater_than_or_equal_to: 0, message: "must be a number greater than or equal to 0" }
+ 
+ # 最低販売価格は必須で、300以上9999999以下の数値
+  validates :mini_sell_price, presence: { message: "can't be blank" },
+  numericality: { 
+  greater_than_or_equal_to: 300,
+  less_than_or_equal_to: 9_999_999,
+  },
+  format: { with: /\A[0-9]+\z/ }
 
 
   
