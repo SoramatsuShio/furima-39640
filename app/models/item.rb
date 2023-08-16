@@ -17,10 +17,7 @@ class Item < ApplicationRecord
   validates :item_name, presence: true
 
   # アイテム説明は必須で、最大1000文字まで
-  validates :item_desc, presence: { message: "Item description can't be blank." }
-
-
-
+  validates :item_desc, presence: true
 
   # カテゴリー、商品状態、送料、出品地域、発送までの日数はそれぞれ必須
   validates :category_id, presence: true, numericality: { other_than: 1 }
@@ -36,8 +33,6 @@ class Item < ApplicationRecord
   greater_than_or_equal_to: 300,
   less_than_or_equal_to: 9_999_999,
   },
-  format: { with: /\A[0-9]+\z/ }
-
-
+  format: { with: /\A[0-9]+\z/, message: "must be a numeric value" }
   
 end

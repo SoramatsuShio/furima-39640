@@ -2,7 +2,7 @@ FactoryBot.define do
   factory :item do
     
     item_name             { 'テスト）中古品お習字セット'}
-    item_desc             { 'テスト）中古品お習字セットです。使用感はさほどありません。　写真画像をよくご覧の上入札ください。'}
+    item_desc             { 'テスト）中古品お習字セットです。使用感はさほどありません。写真画像をよくご覧の上入札ください。'}
     category_id           { '2' } 
     item_status_id        { '2' }
     delivery_charge_id    { '2' }
