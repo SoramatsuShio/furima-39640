@@ -6,9 +6,8 @@ Rails.application.routes.draw do
   resources :users, only: [:edit, :update, :new, :destroy, :show]
     # ユーザーのログアウト処理用ルート
    
-  # Deviseのルートを設定し、Sessionsコントローラーのdestroyアクションをログアウト処理に使う
- 
-  # ユーザーのログアウト処理用ルート
-
+  resources :items, only: [:index, :new, :create]   # 商品ページトップを表示、遷移する処理用ルート
 
 end
+
+
