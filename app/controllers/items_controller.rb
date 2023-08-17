@@ -37,6 +37,7 @@ class ItemsController < ApplicationController
       :shipping_origin_id,
       :days_until_dispatch_id,
       :mini_sell_price,
+      :user_id 
       )
   end
 

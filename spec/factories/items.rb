@@ -9,6 +9,7 @@ FactoryBot.define do
     shipping_origin_id    { '2' }
     days_until_dispatch_id { '2' }
     mini_sell_price        { '1000' }
+    association :user
     
     after(:build) do |message|
       message.image.attach(io: File.open('public/images/test_image.jpg'), filename: 'test_image.jpg')

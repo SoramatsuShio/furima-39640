@@ -10,6 +10,7 @@ class CreateItems < ActiveRecord::Migration[7.0]
       t.integer :days_until_dispatch_id
       t.integer :mini_sell_price
       t.timestamps
+      t.references :user, null: false, foreign_key: true
     end
   end
 end
