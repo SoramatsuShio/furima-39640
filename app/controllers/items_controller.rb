@@ -3,8 +3,7 @@ class ItemsController < ApplicationController
   #before_action :move_to_index, except: [:index, :show]
   
   def index
-  @items = Item.all # Item商品出品情報全部のレコードをトップページを表示するindexアクションのコード
-  @items = Item.order(" id DESC ")
+    @items = Item.order("id DESC")# Item商品出品情報全部のレコードをトップページを表示するindexアクションのコード
   end
   
 
