@@ -4,7 +4,8 @@ class ItemsController < ApplicationController
   
   def index
   @items = Item.all # Item商品出品情報全部のレコードをトップページを表示するindexアクションのコード
-  end
+  @items = Item.order("id DESC")
+end
   
 
   def new
