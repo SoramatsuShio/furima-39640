@@ -2,9 +2,9 @@ class ItemsController < ApplicationController
   before_action :authenticate_user!, except: [:index]
   #before_action :move_to_index, except: [:index, :show]
   
-  #def index
-   # @items = Item.all # Item出品画面をトップページを表示するindexアクションのコード
-  #end
+  def index
+    @items = Item.order("id DESC")# Item商品出品情報全部のレコードをトップページを表示するindexアクションのコード
+  end
   
 
   def new
@@ -38,11 +38,5 @@ class ItemsController < ApplicationController
       :days_until_dispatch_id,
       :mini_sell_price,
       ).merge(user_id: current_user.id)
-
-
-
   end
-
-
-
 end
