@@ -37,7 +37,6 @@ class ItemsController < ApplicationController
 
 
 
-
   def create
     # createアクションのコード
     @item = Item.new(item_params) # 出品情報を登録するアクション
