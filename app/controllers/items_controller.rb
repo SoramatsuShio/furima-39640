@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :authenticate_user!, except: [:index]
+  before_action :authenticate_user!, except: [:index, :show]
   before_action :set_item, only: [:show,:edit]
   #before_action :set_item, only: [:show, :update, :destroy] 後のカリキュラムでこちらを使用すること
   #before_action :authenticate_user!, except: [:index, :show]
@@ -17,6 +17,9 @@ class ItemsController < ApplicationController
   end
 
   def edit
+  end
+
+  def show
   end
 
   def create
@@ -47,7 +50,9 @@ class ItemsController < ApplicationController
       ).merge(user_id: current_user.id)
   end
 
-  
+  def contributor_confirmation
+    redirect_to root_path unless  current_user == @item.user
+  end
 
   def set_item
     @item = Item.find(params[:id])
