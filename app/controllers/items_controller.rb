@@ -14,26 +14,26 @@ class ItemsController < ApplicationController
   end
 
 
-  def edit
-  end
+  #def edit
+  #end
 
   def show
   end
 
-  def destroy
-    @item.destroy
-    redirect_to root_path
-  end
+  #def destroy
+   # @item.destroy
+    #redirect_to root_path
+  #end
 
   
-  def update
-    @item.update(item_params)
-    if @item.save
-      redirect_to item_path(@item)
-    else
-      render :edit, status: :unprocessable_entity
-    end
-  end
+  #def update
+   # @item.update(item_params)
+    #if @item.save
+     # redirect_to item_path(@item)
+    #else
+     # render :edit, status: :unprocessable_entity
+    #end
+  #end
 
 
 
