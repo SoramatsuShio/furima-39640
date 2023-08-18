@@ -132,11 +132,12 @@
     <ul class='item-lists'>
 
     
-      <% @items.each do |item| %>
+            <% @items.each do |item| %>
       <li class='list'>
         <%= link_to item_path(item.id), method: :get, data: { turbo: true } do %>
         <div class='item-img-content'>
           <%= image_tag item.image, class: "item-img" %>
+  
           <%# 商品が売れていればsold outを表示しましょう %>
           <%#if item.sold_out? %>
           <div class='sold-out'>

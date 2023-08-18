@@ -1,12 +1,10 @@
 class ItemsController < ApplicationController
+  before_action :set_item, only: [:edit, :show, :update]
+  #before_action :set_item, only: [:edit, :show, :update, :destroy] 後のカリキュラムでこちらを使用すること
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :set_item, only: [:show,:edit]
-  #before_action :set_item, only: [:show, :update, :destroy] 後のカリキュラムでこちらを使用すること
-  #before_action :authenticate_user!, except: [:index, :show]
   #before_action :contributor_confirmation, only:[:edit, :destory]後のカリキュラムでこちらを使用すること
   #before_action :move_to_index, except: [:index, :show]
-
-
+  
   def index
     @items = Item.order("id DESC")# Item商品出品情報全部のレコードをトップページを表示するindexアクションのコード
   end
@@ -16,11 +14,29 @@ class ItemsController < ApplicationController
     @item = Item.new # Item出品画面へ遷移するnewアクションのコード
   end
 
+
   def edit
   end
 
   def show
   end
+
+  #def destroy
+   # @item.destroy
+    #redirect_to root_path
+  #end
+
+  
+  def update
+    @item.update(item_params)
+    if @item.save
+      redirect_to item_path(@item)
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
+
 
   def create
     # createアクションのコード
@@ -50,12 +66,19 @@ class ItemsController < ApplicationController
       ).merge(user_id: current_user.id)
   end
 
+   
+
+
   def contributor_confirmation
-    redirect_to root_path unless  current_user == @item.user
+     redirect_to root_path unless  current_user == @item.user
   end
+
+   
 
   def set_item
     @item = Item.find(params[:id])
   end
-  
+
 end
+
+
