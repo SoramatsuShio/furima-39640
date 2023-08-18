@@ -1,7 +1,8 @@
 class ItemsController < ApplicationController
-  before_action :set_item, only: [:edit, :show, :update, :destroy]
+  before_action :set_item, only: [:show]
+  #before_action :set_item, only: [:edit, :show, :update, :destroy] 後のカリキュラムでこちらを使用すること
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :contributor_confirmation, only:[:edit, :destory]
+  #before_action :contributor_confirmation, only:[:edit, :destory]後のカリキュラムでこちらを使用すること
   #before_action :move_to_index, except: [:index, :show]
   
   def index
