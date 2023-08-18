@@ -16,6 +16,8 @@ class ItemsController < ApplicationController
     @item = Item.new # Item出品画面へ遷移するnewアクションのコード
   end
 
+  def edit
+  end
 
   def create
     # createアクションのコード
