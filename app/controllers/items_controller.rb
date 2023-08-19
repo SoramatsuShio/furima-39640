@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :set_item, only: [:edit, :show, :update]
+　 before_action :set_item, only: [:edit, :show, :update]
   #before_action :set_item, only: [:edit, :show, :update, :destroy] 後のカリキュラムでこちらを使用すること
   before_action :authenticate_user!, except: [:index, :show]
   before_action :contributor_confirmation, only:[:edit, :destory]
@@ -15,9 +15,10 @@ class ItemsController < ApplicationController
   end
 
 
+
   def edit
-    
   end
+
 
   def show
   end
@@ -28,7 +29,7 @@ class ItemsController < ApplicationController
   #end
 
   
-  def update
+　def update
     @item.update(item_params)
     if @item.save
       redirect_to item_path(@item)
