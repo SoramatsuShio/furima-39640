@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
-　 before_action :set_item, only: [:edit, :show, :update]
-  #before_action :set_item, only: [:edit, :show, :update, :destroy] 後のカリキュラムでこちらを使用すること
+  #before_action :set_item, only: [:edit, :show, :update]
+  before_action :set_item, only: [:edit, :show, :update, :destroy] 
   before_action :authenticate_user!, except: [:index, :show]
   before_action :contributor_confirmation, only:[:edit, :destory]
   #before_action :move_to_index, except: [:index, :show]
@@ -23,13 +23,13 @@ class ItemsController < ApplicationController
   def show
   end
 
-  #def destroy
-   # @item.destroy
-    #redirect_to root_path
-  #end
+  def destroy
+    @item.destroy
+    redirect_to root_path
+  end
 
   
-　def update
+  def update
     @item.update(item_params)
     if @item.save
       redirect_to item_path(@item)
