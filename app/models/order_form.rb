@@ -26,21 +26,31 @@ class OrderForm
     
   end
     
-    
-    def save
-      if valid?
+  def save
+    # 商品情報を保存し、変数orderに代入する
+    order = Order.create(mini_sell_price: mini_sell_price, user_id: user_id)
+    # 住所を保存する
+    # address_idには、変数addressのidと指定する
+    Address.create(zipcode: zipcode, prefecture_id: prefecture_id, city: city, street_address: street_address,
+      building_name: building_name, phone: phone, order_id: order_id, user_id: user_id, item_id: item_id,
+      mini_sell_price: mini_sell_price)
+  end
+
+
+    #def save
+     # if valid?
       # 販売情報を保存し、変数priceに代入する
-      price = Price.create(price: mini_sell_price, user_id: user_id)
+      #price = Price.create(price: mini_sell_price, user_id: user_id)
       # 住所を保存する
       # order_idには、変数orderのidと指定する
-      Order.create(
-        zipcode: zipcode, prefecture_id: prefecture_id, city: city, street_address: street_address,
-        building_name: building_name, phone: phone, order_id: order_id, user_id: user_id, item_id: item_id,
-        mini_sell_price: mini_sell_price
-      )
-    else
-      false
-    end
-  end
+      #Order.create(
+       # zipcode: zipcode, prefecture_id: prefecture_id, city: city, street_address: street_address,
+        #building_name: building_name, phone: phone, order_id: order_id, user_id: user_id, item_id: item_id,
+        #mini_sell_price: mini_sell_price
+     # )
+    #else
+     # false
+    #end
+  #end
 end
 
