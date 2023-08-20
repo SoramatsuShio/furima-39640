@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     # ユーザーのログアウト処理用ルート
 
   resources :items do # 商品ページトップを表示、遷移する処理用ルート
-    resources :orders, only: [:index, :new, :create]
+    resources :orders, only: [:index, :new, :create, :show]
   end
 
 end
