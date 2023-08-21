@@ -6,6 +6,6 @@ FactoryBot.define do
     city                  { '津軽市' } 
     street_address        { '大野1-2-5' }
     phone                 { '090213645692' }
-    
+  
   end
 end
