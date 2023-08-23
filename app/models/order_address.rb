@@ -13,6 +13,7 @@ class OrderAddress
     validates :street_address
     validates :phone, format: {with: /\A\d{10,11}\z/, message: "は10桁以上11桁以内の半角数値のみで入力してください"}
     validates :token
+    validates :building_name, allow_blank: true # 建物名を任意とし、空でもOKとする
    end
     
 
