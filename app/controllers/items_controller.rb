@@ -2,7 +2,7 @@ class ItemsController < ApplicationController
   before_action :authenticate_user!, except: [:index]
   before_action :set_item, only: [:edit, :show, :update, :destroy] 
   before_action :contributor_confirmation, only:[:edit, :destory]
-  #before_action :move_to_index, except: [:index, :show]
+
   
   def index
     #@items = Item.order("id DESC")# Item商品出品情報全部のレコードをトップページを表示するindexアクションのコード
@@ -17,6 +17,10 @@ class ItemsController < ApplicationController
 
 
   def edit
+    @item = Item.find(params[:id])
+    if current_user.id == @item.user_id
+    redirect_to root_path
+   end
   end
 
 
