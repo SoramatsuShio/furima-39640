@@ -140,12 +140,12 @@
 
           
           <%# 商品が売れていればsold outを表示しましょう %>
-           
+          <% #if @item.order.present? %>
           <%#if item.sold_out? %>
           <div class='sold-out'>
             <span>Sold Out!!</span>
           </div>
-          
+           <% #end %>
           <%# //商品が売れていればsold outを表示しましょう %>
 
         </div>
