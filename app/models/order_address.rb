@@ -12,6 +12,7 @@ class OrderAddress
     validates :city
     validates :street_address
     validates :phone, format: {with: /\A\d{10,11}\z/, message: "は10桁以上11桁以内の半角数値のみで入力してください"}
+    validates :token
    end
     
 
@@ -28,8 +29,7 @@ class OrderAddress
     Address.create(zipcode: zipcode, shipping_origin_id: shipping_origin_id, city: city, street_address: street_address,
       building_name: building_name, phone: phone, order_id: order[:id]
     )
-    
-  end
+    end
 
 
 end

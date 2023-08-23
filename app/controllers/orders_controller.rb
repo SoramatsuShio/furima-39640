@@ -36,6 +36,7 @@ class OrdersController < ApplicationController
 
 
 
+  
   private
 
  # ストロングパラメータを定義

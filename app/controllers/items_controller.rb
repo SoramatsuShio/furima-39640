@@ -1,12 +1,12 @@
 class ItemsController < ApplicationController
-  #before_action :set_item, only: [:edit, :show, :update]
+  before_action :authenticate_user!, except: [:index]
   before_action :set_item, only: [:edit, :show, :update, :destroy] 
-  before_action :authenticate_user!, except: [:index, :show]
   before_action :contributor_confirmation, only:[:edit, :destory]
   #before_action :move_to_index, except: [:index, :show]
   
   def index
-    @items = Item.order("id DESC")# Item商品出品情報全部のレコードをトップページを表示するindexアクションのコード
+    #@items = Item.order("id DESC")# Item商品出品情報全部のレコードをトップページを表示するindexアクションのコード
+    @items = Item.all.order("created_at DESC")
   end
   
 
