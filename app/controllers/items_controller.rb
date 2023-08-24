@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
-  before_action :authenticate_user!, except: [:index]
-  before_action :set_item, only: [:edit, :show, :update, :destroy] 
+  before_action :authenticate_user!, except: [:index,:show]
+  #before_action :set_item, only: [:edit, :show, :update] 
   before_action :contributor_confirmation, only:[:edit, :destory]
 
   
@@ -17,8 +17,9 @@ class ItemsController < ApplicationController
 
 
   def edit
-    @item = Item.find(params[:id])
-  if @item.sold_out? || current_user.id != @item.user_id
+
+   if @item.order_address.present? ||
+ current_user.id != @item.user_id
     redirect_to root_path
    end
   end
