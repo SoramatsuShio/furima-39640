@@ -1,12 +1,13 @@
 class ItemsController < ApplicationController
-  #before_action :set_item, only: [:edit, :show, :update]
-  before_action :set_item, only: [:edit, :show, :update, :destroy] 
-  before_action :authenticate_user!, except: [:index, :show]
-  before_action :contributor_confirmation, only:[:edit, :destory]
-  #before_action :move_to_index, except: [:index, :show]
+  before_action :authenticate_user!, except: [:index,:show]
+  before_action :set_item, only: [:edit, :update, :show]
+  #before_action :set_item, only: [:edit, :show, :update] 
+
+
   
   def index
-    @items = Item.order("id DESC")# Item商品出品情報全部のレコードをトップページを表示するindexアクションのコード
+    #@items = Item.order("id DESC")# Item商品出品情報全部のレコードをトップページを表示するindexアクションのコード
+    @items = Item.all.order("created_at DESC")
   end
   
 
@@ -17,6 +18,10 @@ class ItemsController < ApplicationController
 
 
   def edit
+    if @item.order.present? ||
+    current_user.id != @item.user_id
+    redirect_to root_path
+   end
   end
 
 
@@ -24,7 +29,9 @@ class ItemsController < ApplicationController
   end
 
   def destroy
+    if current_user.id == @item.user_id
     @item.destroy
+    end
     redirect_to root_path
   end
 
@@ -43,7 +50,6 @@ class ItemsController < ApplicationController
   def create
     # createアクションのコード
     @item = Item.new(item_params) # 出品情報を登録するアクション
-
     if @item.save
       redirect_to '/'
     else
@@ -68,19 +74,13 @@ class ItemsController < ApplicationController
       ).merge(user_id: current_user.id)
   end
 
-   
-
-
-  def contributor_confirmation
-     redirect_to root_path unless  current_user == @item.user
-  end
-
-   
-
   def set_item
     @item = Item.find(params[:id])
   end
+   
+  #def contributor_confirmation
+    #if @item.order_address.present?||
+     #redirect_to root_path unless  current_user == @item.user
+  #end
 
 end
-
-

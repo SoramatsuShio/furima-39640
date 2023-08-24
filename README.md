@@ -71,7 +71,7 @@ has_one : address
 | Column            | Type     | Options              |
 | ------------- | ---------- | ------------------------------ |
 | zipcode           | string   | null: false          |
-| prefecture_id     | integer  | null: false          |
+| shipping_origin_id | integer  | null: false          |
 | city              | string   | null: false          |
 | street_address    | string   | null: false          |
 | building_name     | string   |                      |
