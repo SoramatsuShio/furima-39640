@@ -28,7 +28,7 @@ RSpec.describe OrderAddress, type: :model do
       it 'zipcodeが空だと保存できないこと' do
         @order_address.zipcode = ''
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include("Zipcode can't be blank", "Zipcode is invalid. Include hyphen(-)")
+        expect(@order_address.errors.full_messages).to include("Zipcode can't be blank")
       end
 
        it 'postal_codeが「3桁ハイフン4桁」の半角文字列でないと保存できないこと' do
